@@ -1,0 +1,75 @@
+#   __         ______     __   __     ______     __  __     ______     ______     ______    
+#  /\ \       /\  __ \   /\ "-.\ \   /\  ___\   /\ \/\ \   /\  __ \   /\  ___\   /\  ___\   
+#  \ \ \____  \ \  __ \  \ \ \-.  \  \ \ \__ \  \ \ \_\ \  \ \  __ \  \ \ \__ \  \ \  __\   
+#   \ \_____\  \ \_\ \_\  \ \_\\"\_\  \ \_____\  \ \_____\  \ \_\ \_\  \ \_____\  \ \_____\ 
+#    \/_____/   \/_/\/_/   \/_/ \/_/   \/_____/   \/_____/   \/_/\/_/   \/_____/   \/_____/ 
+#  
+
+# -------------------------------------------------------------------------------------------------------------------------------------------- #
+
+MESSAGE:
+    HOME:
+        CREATED: "{PREFIX} &7Home &d{HOME} &7successfully created !"
+        DELETED: "{PREFIX} &7Home &d{HOME} &7successfully deleted !"
+        
+        LIST:
+            MESSAGE: "{PREFIX} &7Here's your home list :"
+            HOMES: "  &8- &8[&5{WORLD}&8] &d{HOME} &8(&d{X}&8, &d{Y}&8, &d{Z}&8)"
+            
+        TELEPORTED: "{PREFIX} &7Teleportation to &d{HOME} &7successful !"
+        HOVER: "&7Click to be teleported to your home &8: &d{HOME}"
+        
+    FILTER:
+        ENABLED: "{PREFIX} &7Your filter has been &aenabled &7!"
+        DISABLED: "{PREFIX} &7Your filter has been &cdisabled &7!"
+        
+    BACK:
+        REMINDER: "{PREFIX} &7Use &8/&dback &7to return to your last death location !"
+        
+    TRASH:
+        COUNTER: "{PREFIX} &7A total of &d{COUNT} items &7has been destroyed !"
+    
+ERROR:
+    PLAYER_ONLY_COMMAND: "{PREFIX} &cThis command can't be executed by the console !"
+    FEATURE_DISABLED: "{PREFIX} &cThis feature has been disabled in configuration file !"
+    DATABASE_DISABLED: "{PREFIX} &cDatabase is disabled, this feature has been disabled !"
+    
+    BACK:
+        NOT_DEAD: "{PREFIX} &cYou're not dead recently !"
+        
+    FILTER:
+        NO_DUPLICATE_ITEM: "{PREFIX} &cYou're not allowed to put the same item in the filter twice !"
+        
+    HOME:
+        EMPTY_LIST: "{PREFIX} &cYou don't own any home !"
+        NOT_FOUND: "{PREFIX} &cYou don't own any home using this name !"
+        
+    BACKPACK:
+        SAVE_FAIL: "{PREFIX} &cAn error has occured, your backpack couldn't be saved !"
+        
+    COMMAND_USAGE:
+        LUMINA: "{PREFIX} &cUsage &8: &7/&flumina &8<&7parameter&8>"
+        SET_HOME: "{PREFIX} &cUsage &8: &7/&fsethome &8<&7name&8>"
+        DEL_HOME: "{PREFIX} &cUsage &8: &7/&fdelhome &8<&7name&8>"
+        HOME: "{PREFIX} &cUsage &8: &7/&fhome &8<&7name&8>"
+            
+EVENT:
+    JOIN: "&8[&a+&8] &f{PLAYER}"
+    QUIT: "&8[&4-&8] &f{PLAYER}"
+    DEATH: "💀 &d{PLAYER} &7has died !"
+
+# -------------------------------------------------------------------------------------------------------------------------------------------- #
+
+GUI:
+    FILTER:
+        TITLE: "&dFilter"
+        BUTTON:
+            ENABLE: "&aEnable"
+            DISABLE: "&cDisable"
+            CLEAR: "&4Clear"
+            
+    BACKPACK:
+        TITLE: "&dBackpack"
+        
+    TRASH:
+        TITLE: "&dTrash"

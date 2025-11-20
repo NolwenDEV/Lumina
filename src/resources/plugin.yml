@@ -1,0 +1,42 @@
+name: Lumina
+version: 1.0.0
+
+author: Nolwen
+description: Lumina brings light to your server, a toolkit of versatile features designed to refine, connect, and enhance your world
+website: https://github.com/NolwenDEV/Lumina
+
+main: be.nolwen.lumina.Main
+api-version: 1.20
+
+commands:
+    lumina:
+        description: Access Lumina's Settings
+        usage: "/lumina <parameter>"
+    home:
+        description: Return to one of your saved spots
+        usage: "/home <name>"
+    homes:
+        description: List the places you've marked along your journey
+    sethome:
+        description: Mark this place as a place you want to find again
+        usage: "/sethome <name>"
+    delhome:
+        description: Remove one of your marked location
+        usage: "/delhome <name>"
+    back:
+        description: Return to the last place you stood before moving on
+        usage: "/back"
+    craft:
+        description: Open a crafting table from wherever you are
+        usage: "/craft"
+        aliases: workbench
+    trash:
+        description: Dispose of unwanted items instantly
+        usage: "/trash"
+    filter:
+        description: Choose which items you automatically ignore when picking up
+        usage: "/filter"
+    backpack:
+        description: Access your portable storage
+        usage: "/backpack"
+        aliases: bp

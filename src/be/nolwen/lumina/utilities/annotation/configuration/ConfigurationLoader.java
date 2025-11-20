@@ -1,0 +1,106 @@
+package be.nolwen.lumina.utilities.annotation.configuration;
+
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.lang.reflect.Field;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import org.bukkit.configuration.ConfigurationSection;
+import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.configuration.file.YamlConfiguration;
+
+import be.nolwen.lumina.Main;
+
+public class ConfigurationLoader {
+	
+	private final Map<String, FileConfiguration> loadedFiles = new HashMap<>();
+	
+		// ---------------------------------------- \\
+	
+	public void load(Object instance) {
+		for(Field field : instance.getClass().getDeclaredFields()) {
+			if(field.getAnnotation(Configuration.class) == null) continue;
+			Configuration annotation = field.getAnnotation(Configuration.class);
+			
+			FileConfiguration configuration = getConfigurationFile(annotation.FILE());
+			Object value = null;
+			
+			field.setAccessible(true);
+			try {
+				if(Map.class.isAssignableFrom(field.getType())) {
+					ConfigurationSection section = configuration.getConfigurationSection(annotation.KEY());
+					Map<String, String> map = new HashMap<>();
+					
+					if(section != null) {
+						for(String key : section.getKeys(false)) {
+							String text = section.getString(key);
+							if(text != null && text.contains("&")) text = text.replace("&", "§");
+							map.put(key, text);
+						}
+					}
+					
+					value = map;
+				} else if(List.class.isAssignableFrom(field.getType())) {
+					List<String> list = configuration.getStringList(annotation.KEY());
+				    list.replaceAll(string -> string != null ? string.replace("&", "§") : null);
+				    
+				    value = list;
+				} else {
+					value = configuration.get(annotation.KEY(), field.get(instance));
+					if (value instanceof String string && string.contains("&")) { value = string.replace("&", "§"); }
+				}
+
+	            field.set(instance, value);
+	        } catch (IllegalAccessException exception) {
+	            Main.getInstance().getLogger().severe(String.format("⚠️ | Field '%s' cannot be defined : %s", field.getName(), exception.getMessage()));
+	        }
+		}
+	}
+	
+	private FileConfiguration getConfigurationFile(String fileName) {
+		if(!fileName.endsWith(".yml")) fileName += ".yml";
+		if(loadedFiles.containsKey(fileName)) return loadedFiles.get(fileName);
+		
+		File file = new File(Main.getInstance().getDataFolder(), fileName);
+		if(!file.exists()) {
+			try(InputStream input = Main.getInstance().getResource(String.format("configuration/%s", fileName))) {
+				if(input != null) {
+					Main.getInstance().getDataFolder().mkdirs();
+					try(OutputStream output = new FileOutputStream(file)) {
+						input.transferTo(output);
+						Main.getInstance().getLogger().info(String.format("✅ | Default configuration sucessfully copied into '%s' !", file.getName()));
+					}
+				} else {
+					file.createNewFile();
+					Main.getInstance().getLogger().info(String.format("✅ | Empty configuration sucessfully created for '%s' !", file.getName()));
+				}
+			} catch(IOException exception) {
+				Main.getInstance().getLogger().severe(String.format("⚠️ | File '%s' couldn't be created : %s", file.getName(), exception.getMessage()));
+			}
+		}
+		
+		YamlConfiguration configuration = YamlConfiguration.loadConfiguration(file);
+		loadedFiles.put(fileName, configuration);
+		
+		return configuration;
+	}
+	
+	public void save() {
+		for(Map.Entry<String, FileConfiguration> entry : loadedFiles.entrySet()) {
+			File file = new File(Main.getInstance().getDataFolder(), entry.getKey());
+			
+			try {
+				entry.getValue().save(file);
+				Main.getInstance().getLogger().info(String.format("✅ | File '%s' has been successfully saved !", file.getName()));
+			} catch(IOException exception) {
+				Main.getInstance().getLogger().severe(String.format("⚠️ | File '%s' couldn't be saved : %s", file, exception.getMessage()));
+			}
+		}
+	}
+
+}

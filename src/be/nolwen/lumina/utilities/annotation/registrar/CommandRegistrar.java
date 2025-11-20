@@ -1,0 +1,9 @@
+package be.nolwen.lumina.utilities.annotation.registrar;
+
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+
+@Retention(RetentionPolicy.RUNTIME)
+public @interface CommandRegistrar {
+	String NAME();
+}

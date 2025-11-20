@@ -1,0 +1,111 @@
+package be.nolwen.lumina.utilities.enumeration;
+
+public enum Query {
+	
+	CREATE_PLAYERS_TABLE(
+			"CREATE TABLE IF NOT EXISTS PLAYERS ("
+				+ "ID INT AUTO_INCREMENT PRIMARY KEY,"
+				+ "UUID VARCHAR(36),"
+				+ "USERNAME VARCHAR(16),"
+				+ "UNIQUE KEY UNIQUE_UUID (UUID)"
+				+ ")"
+	),
+	
+	CREATE_HOMES_TABLE(
+			"CREATE TABLE IF NOT EXISTS HOMES ("
+				+ "ID INT AUTO_INCREMENT PRIMARY KEY,"
+				+ "LINKED_ID INT,"
+				+ "NAME VARCHAR(16),"
+				+ "WORLD VARCHAR(64),"
+				+ "X DOUBLE,"
+				+ "Y DOUBLE,"
+				+ "Z DOUBLE,"
+				+ "YAW FLOAT,"
+				+ "PITCH FLOAT,"
+				+ "FOREIGN KEY (LINKED_ID) REFERENCES PLAYERS(ID) ON DELETE CASCADE,"
+				+ "UNIQUE (LINKED_ID, NAME)"
+				+ ")"
+	),
+	
+	CREATE_BACKPACK_TABLE(
+			"CREATE TABLE IF NOT EXISTS BACKPACKS ("
+			+ "ID INT AUTO_INCREMENT PRIMARY KEY,"
+			+ "LINKED_ID INT,"
+			+ "ITEM LONGTEXT,"
+			+ "FOREIGN KEY (LINKED_ID) REFERENCES PLAYERS(ID) ON DELETE CASCADE,"
+			+ "UNIQUE (LINKED_ID)"
+			+ ")"
+	),
+	
+			 // -------------------- \\
+	
+	UPDATE_PLAYER("INSERT INTO PLAYERS (UUID, USERNAME) VALUES (?, ?) ON DUPLICATE KEY UPDATE USERNAME = VALUES(USERNAME)"),
+	RETRIEVE_PLAYER("SELECT * FROM PLAYERS WHERE UUID = ? OR USERNAME = ?"),
+
+	UPDATE_HOME(
+			"INSERT INTO HOMES (LINKED_ID, NAME, WORLD, X, Y, Z, YAW, PITCH) " +
+					"SELECT ID, ?, ?, ?, ?, ?, ?, ? " +
+					"FROM PLAYERS WHERE UUID = ? OR USERNAME = ? " +
+					"ON DUPLICATE KEY UPDATE " +
+					"NAME = VALUES(NAME), " +
+					"WORLD = VALUES(WORLD), " +
+					"X = VALUES(X), " +
+					"Y = VALUES(Y), " +
+					"Z = VALUES(Z), " +
+					"YAW = VALUES(YAW), " +
+					"PITCH = VALUES(PITCH)"
+	),
+	RETRIEVE_HOME(
+			"SELECT home.NAME, home.WORLD, home.X, home.Y, home.Z, home.YAW, home.PITCH FROM HOMES home" + " "
+			+ "JOIN PLAYERS player ON home.LINKED_ID = player.ID WHERE player.UUID = ? OR player.USERNAME = ?"
+	),
+	REMOVE_HOME("DELETE home FROM HOMES home JOIN PLAYERS player ON home.LINKED_ID = player.ID WHERE (player.UUID = ? or player.USERNAME = ?) and home.NAME = ?"),
+	
+	UPDATE_BACKPACK("INSERT INTO BACKPACKS (LINKED_ID, ITEM) SELECT ID, ? FROM PLAYERS WHERE UUID = ? OR USERNAME = ? ON DUPLICATE KEY UPDATE ITEM = VALUES(ITEM)"),
+	RETRIEVE_BACKPACK(
+			"SELECT backpack.ITEM FROM BACKPACKS backpack JOIN PLAYERS player ON backpack.LINKED_ID = player.ID WHERE player.UUID = ? OR player.USERNAME = ?"
+	);
+	
+	
+	
+	
+	
+
+
+//	
+//	UPDATE_PLAYER("INSERT INTO RegisteredPlayers (UUID, USERNAME) VALUES (?, ?) ON DUPLICATE KEY UPDATE USERNAME = VALUES(USERNAME)"),
+//	
+//	INSERT_HOME("INSERT INTO Home (UUID, USERNAME, NAME, WORLD, X, Y, Z, YAW, PITCH) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)"),
+//	UPDATE_HOME_BY_UUID("UPDATE Home SET WORLD = ?, X = ?, Y = ?, Z = ?, YAW = ?, PITCH = ? WHERE UUID = ? AND NAME = ?"),
+//	UPDATE_HOME_BY_USERNAME("UPDATE Home SET WORLD = ?, X = ?, Y = ?, Z = ?, YAW = ?, PITCH = ? WHERE USERNAME = ? AND NAME = ?"),
+//	
+//	INSERT_BACKPACK("INSERT INTO Backpack (UUID, USERNAME, ITEM) VALUES (?, ?, ?)"),
+//	UPDATE_BACKPACK_BY_UUID("UPDATE Backpack SET ITEM = ? WHERE UUID = ?"),
+//	UPDATE_BACKPACK_BY_USERNAME("UPDATE Backpack SET ITEM = ? WHERE USERNAME = ?"),
+//	
+//	RETRIEVE_PLAYER_BY_UUID("SELECT * FROM RegisteredPlayers WHERE UUID = ?"),
+//	RETRIEVE_HOME_BY_UUID("SELECT * FROM Home WHERE UUID = ?"),
+//	RETRIEVE_HOMENAME_BY_UUID("SELECT * FROM Home WHERE UUID = ? AND NAME = ?"),
+//	RETRIEVE_BACKPACK_BY_UUID("SELECT * FROM Backpack WHERE UUID = ?"),
+//	
+//	RETRIEVE_PLAYER_BY_USERNAME("SELECT * FROM RegisteredPlayers WHERE USERNAME = ?"),
+//	RETRIEVE_HOME_BY_USERNAME("SELECT * FROM Home WHERE USERNAME = ?"),
+//	RETRIEVE_HOMENAME_BY_USERNAME("SELECT * FROM Home WHERE USERNAME = ? AND NAME = ?"),
+//	RETRIEVE_BACKPACK_BY_USERNAME("SELECT * FROM Backpack WHERE USERNAME = ?"),
+//	
+//	REMOVE_HOME_BY_UUID("DELETE FROM Home WHERE UUID = ? AND NAME = ?"),
+//	REMOVE_HOME_BY_USERNAME("DELETE FROM Home WHERE USERNAME = ? AND NAME = ?");
+	
+		// ---------------------------------------- \\
+	
+	private final String query;
+
+	Query(String query) {
+        this.query = query;
+    }
+
+    public String getQuery() {
+        return query;
+    }
+
+}
