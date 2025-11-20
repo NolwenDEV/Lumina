@@ -1,5 +1,5 @@
 <h1 align="center">
-  Lunina
+  Lumina
 </h1>
 
 <div align="center">
@@ -19,7 +19,6 @@
 - [Installation](#installation)
   - [Translation](#translation)
 - [Licensing](#licensing)
-- [Links](#links)
 
 ## Requirements
 
@@ -54,8 +53,6 @@ To install the latest version of **Lumina**, simply download the `Lumina.jar` fi
 
 Then, put the file you just downloaded in the `plugins/` folder of your Minecraft server, then, restart it.
 Finally, go to the `Lumina/` folder in the `plugins/` folder of your server and configure **Lumina** to work properly.
-
-If necessary, you can follow our **[installation guide](https://github.com/NolwenDEV/Lumina/wiki)** on our Wiki.
 
 ### Translation
 
