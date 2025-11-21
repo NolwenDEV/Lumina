@@ -11,6 +11,7 @@ import be.nolwen.lumina.utilities.manager.SQLManager;
 import be.nolwen.lumina.utilities.manager.configuration.ConfigManager;
 import be.nolwen.lumina.utilities.manager.configuration.DatabaseManager;
 import be.nolwen.lumina.utilities.manager.configuration.LanguageManager;
+import be.nolwen.lumina.utilities.manager.updater.Updater;
 
 public class Main extends JavaPlugin {
 	
@@ -55,6 +56,7 @@ public class Main extends JavaPlugin {
 		
 				 // -------------------- \\
 		
+		new Updater().checkForUpdate();
 		Main.getInstance().getSQLManager().connect();
 	}
 	
