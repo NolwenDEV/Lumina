@@ -21,6 +21,7 @@
 - 💬 | Customizable event messages (When player join, quit or die) and customizable chat messages
 - 💥 | Ability to disable Creeper Griefing
 - 🌾 | Automatically replants seeds when harvested, including modded crops
+- ♻️ | Auto-Updater who check for update when server starts and every 6 hours
 - 🚧 | More incoming, stay in touch ! (Have an idea ? Contact me on Discord : @NolwenDEV)
 
 # ⚠️ | Requirements
