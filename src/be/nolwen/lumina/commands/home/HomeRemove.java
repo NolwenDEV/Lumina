@@ -25,16 +25,20 @@ public class HomeRemove implements CommandExecutor {
 		
 		Player player = (Player) sender;
 		
-		Main.getInstance().getSQLManager().executeQuery(Query.REMOVE_HOME, (result) -> {
+		Main.getInstance().getSQLManager().executeQuery(Query.RETRIEVE_HOME, (result) -> {
 			if(!result.isEmpty()) {
-				player.sendMessage(Utils.format(
-						Main.getInstance().getLanguageManager().getHomeRemovedMessage(),
-						Map.of("HOME", arguments[0])
-				));
-			} else {
-				player.sendMessage(Utils.format(Main.getInstance().getLanguageManager().getHomeNotFoundError()));
-			}
-		}, player.getUniqueId().toString(), player.getName(), arguments[0].toLowerCase());
+				boolean found = false;
+				for(Map<String, Object> home : result) { if(home.get("NAME").toString().equalsIgnoreCase(arguments[0])) { found = true; } }
+				
+				if(found) {
+					Main.getInstance().getSQLManager().executeQuery(Query.REMOVE_HOME, player.getUniqueId().toString(), player.getName(), arguments[0].toLowerCase());
+					player.sendMessage(Utils.format(
+							Main.getInstance().getLanguageManager().getHomeRemovedMessage(),
+							Map.of("HOME", arguments[0])
+					));
+				} else player.sendMessage(Utils.format(Main.getInstance().getLanguageManager().getHomeNotFoundError()));
+			} else { player.sendMessage(Utils.format(Main.getInstance().getLanguageManager().getHomeEmptyError())); }
+		}, player.getUniqueId().toString(), player.getName());
 		
 		return true;
     }
