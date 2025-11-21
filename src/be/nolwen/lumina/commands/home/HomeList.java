@@ -53,7 +53,7 @@ public class HomeList implements CommandExecutor {
 				}
 				
 				for(TextComponent textComponent : textComponents) { player.spigot().sendMessage(new TextComponentBuilder().compose(textComponent).build()); }
-			} else { player.sendMessage(Utils.format(Main.getInstance().getLanguageManager().getHomeNotFoundError())); }
+			} else { player.sendMessage(Utils.format(Main.getInstance().getLanguageManager().getHomeEmptyError())); }
 		}, player.getUniqueId().toString(), player.getName());
 		
 		return true;
