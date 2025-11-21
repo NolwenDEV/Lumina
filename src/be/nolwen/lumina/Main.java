@@ -2,6 +2,7 @@ package be.nolwen.lumina;
 
 import java.io.File;
 
+import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import be.nolwen.lumina.utilities.annotation.configuration.ConfigurationLoader;
@@ -56,8 +57,10 @@ public class Main extends JavaPlugin {
 		
 				 // -------------------- \\
 		
-		new Updater().checkForUpdate();
 		Main.getInstance().getSQLManager().connect();
+		Bukkit.getScheduler().runTaskTimer(instance, () -> {
+			new Updater().checkForUpdate();
+		}, 0L, (6 * 60 * 60 * 20L));
 	}
 	
 	@Override
