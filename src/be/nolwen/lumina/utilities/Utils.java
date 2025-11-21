@@ -1,12 +1,15 @@
-package be.nolwen.lumina.utilities.builder;
+package be.nolwen.lumina.utilities;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 import org.bukkit.command.CommandSender;
 
 import be.nolwen.lumina.Main;
 
-public class MessageBuilder {
+public class Utils {
 
 	public static String format(String raw) { return format(raw, Map.of()); }
 	public static boolean error(CommandSender sender, String raw) { return error(sender, raw, Map.of()); }
@@ -28,5 +31,9 @@ public class MessageBuilder {
 		sender.sendMessage(format(raw, values));
 		return true;
 	}
+	
+		// ---------------------------------------- \\
+	
+	public static List<String> buildLore(String lore) { return Arrays.stream(lore.substring(1, lore.length() - 1).split(", ")).collect(Collectors.toList()); }
 	
 }
