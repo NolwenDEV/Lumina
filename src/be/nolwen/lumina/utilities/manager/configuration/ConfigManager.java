@@ -18,9 +18,6 @@ public class ConfigManager {
 	@Configuration(FILE = "Configuration", KEY = "MODULE.PREMIUM")
 	private boolean premiumModule;
 	
-	@Configuration(FILE = "Configuration", KEY = "MODULE.DATABASE")
-	private boolean databaseModule;
-	
 	@Configuration(FILE = "Configuration", KEY = "MODULE.CHAT")
 	private boolean chatModule;
 	
@@ -67,7 +64,6 @@ public class ConfigManager {
 				// -------------------- \\
 	
 	public boolean isPremiumModule() { return premiumModule; }
-	public boolean isDatabaseModule() { return databaseModule; }
 	public boolean isChatModule() { return chatModule; }
 	public boolean isCreeperGriefingModule() { return creeperGriefingModule; }
 	public boolean isCropReplanterModule() { return cropReplanterModule; }

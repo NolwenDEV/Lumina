@@ -30,7 +30,7 @@ public class SQLManager {
 	public void connect() {
 		Bukkit.getScheduler().runTaskAsynchronously(Main.getInstance(), () -> {
 			try {
-				if(!Main.getInstance().getConfigManager().isDatabaseModule()) {
+				if(!Main.getInstance().getDatabaseManager().isEnabled()) {
 					Main.getInstance().getLogger().warning("⚠️ | Database is disabled in 'Configuration.yml', features using database have been disabled !");
 					return;
 				}

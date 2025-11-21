@@ -42,7 +42,7 @@ public class Lumina implements CommandExecutor {
 					sender.sendMessage(
 							String.format("§dLumina §8● §7Database is currently %s §7!", (Main.getInstance().getSQLManager().isConnected() ? "§aonline" : "§coffline"))
 					);
-					if(!Main.getInstance().getConfigManager().isDatabaseModule()) {
+					if(!Main.getInstance().getDatabaseManager().isEnabled()) {
 						sender.sendMessage("§dLumina §8● §cDatabase is disabled in 'Configuration.yml', features using database have been disabled !");
 					} else if(!Main.getInstance().getSQLManager().isConnected()) {
 						sender.sendMessage("§dLumina §8● §7No worries if database if §coffline§7, it'll automatically be reconnected at next SQL request !");
