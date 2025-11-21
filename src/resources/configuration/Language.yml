@@ -20,8 +20,12 @@ MESSAGE:
         HOVER: "&7Click to be teleported to your home &8: &d{HOME}"
         
     FILTER:
-        ENABLED: "{PREFIX} &7Your filter has been &aenabled &7!"
-        DISABLED: "{PREFIX} &7Your filter has been &cdisabled &7!"
+        TOGGLE:
+            ENABLED: "{PREFIX} &7Your filter has been &aenabled &7!"
+            DISABLED: "{PREFIX} &7Your filter has been &cdisabled &7!"
+        DESTROYER:
+            ENABLED: "{PREFIX} &7Ground items that are on your filter will &astart being destroyed &7!"
+            DISABLED: "{PREFIX} &7Ground items that are on your filter will &cstop being destroyed &7!"
         
     BACK:
         REMINDER: "{PREFIX} &7Use &8/&dback &7to return to your last death location !"
@@ -64,9 +68,39 @@ GUI:
     FILTER:
         TITLE: "&dFilter"
         BUTTON:
-            ENABLE: "&aEnable"
-            DISABLE: "&cDisable"
-            CLEAR: "&4Clear"
+            SEPARATOR:
+                MATERIAL: "PINK_STAINED_GLASS_PANE"
+                NAME: " "
+            
+            TOGGLE:
+                ENABLE:
+                    MATERIAL: "GREEN_WOOL"
+                    NAME: "&aEnable"
+                    LORE:
+                        - "&7Click to &aenable &7filter !"
+                DISABLE:
+                    MATERIAL: "RED_WOOL"
+                    NAME: "&cDisable"
+                    LORE:
+                        - "&7Click to &cdisable &7filter !"
+                        
+            DESTROYER:
+                ENABLE:
+                    MATERIAL: "SNOWBALL"
+                    NAME: "&aEnable"
+                    LORE:
+                        - "&7Click to &astart clearing &7ground items that are in your filter !"
+                DISABLE:
+                    MATERIAL: "FIRE_CHARGE"
+                    NAME: "&cDisable"
+                    LORE:
+                        - "&7Click to &cstop clearing &7ground items that are in your filter !"
+                        
+            CLEAR:
+                MATERIAL: "CAULDRON"
+                NAME: "&4Clear"
+                LORE:
+                    - "&7Click to &4clear &7items in filter !"
             
     BACKPACK:
         TITLE: "&dBackpack"

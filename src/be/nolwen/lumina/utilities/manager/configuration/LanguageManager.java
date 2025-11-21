@@ -24,11 +24,17 @@ public class LanguageManager {
 	
 				// -------------------- \\
 	
-	@Configuration(FILE = "Language", KEY = "MESSAGE.FILTER.ENABLED")
-	private String filterEnabledMessage;
+	@Configuration(FILE = "Language", KEY = "MESSAGE.FILTER.TOGGLE.ENABLED")
+	private String filterToggleEnabledMessage;
 	
-	@Configuration(FILE = "Language", KEY = "MESSAGE.FILTER.DISABLED")
-	private String filterDisabledMessage;
+	@Configuration(FILE = "Language", KEY = "MESSAGE.FILTER.TOGGLE.DISABLED")
+	private String filterToggleDisabledMessage;
+	
+	@Configuration(FILE = "Language", KEY = "MESSAGE.FILTER.DESTROYER.ENABLED")
+	private String filterDestroyerEnabledMessage;
+	
+	@Configuration(FILE = "Language", KEY = "MESSAGE.FILTER.DESTROYER.DISABLED")
+	private String filterDestroyerDisabledMessage;
 	
 				// -------------------- \\
 	
@@ -94,14 +100,23 @@ public class LanguageManager {
 	@Configuration(FILE = "Language", KEY = "GUI.FILTER.TITLE")
 	private String guiFilterTitle;
 	
-	@Configuration(FILE = "Language", KEY = "GUI.FILTER.BUTTON.ENABLE")
-	private String guiFilterEnableButton;
+	@Configuration(FILE = "Language", KEY = "GUI.FILTER.BUTTON.SEPARATOR")
+	private Map<String, String> guiFilterSeparatorButton;
 	
-	@Configuration(FILE = "Language", KEY = "GUI.FILTER.BUTTON.DISABLE")
-	private String guiFilterDisableButton;
+	@Configuration(FILE = "Language", KEY = "GUI.FILTER.BUTTON.TOGGLE.ENABLE")
+	private Map<String, String> guiFilterToggleEnableButton;
+	
+	@Configuration(FILE = "Language", KEY = "GUI.FILTER.BUTTON.TOGGLE.DISABLE")
+	private Map<String, String> guiFilterToggleDisableButton;
+	
+	@Configuration(FILE = "Language", KEY = "GUI.FILTER.BUTTON.DESTROYER.ENABLE")
+	private Map<String, String> guiFilterDestroyerEnableButton;
+	
+	@Configuration(FILE = "Language", KEY = "GUI.FILTER.BUTTON.DESTROYER.DISABLE")
+	private Map<String, String> guiFilterDestroyerDisableButton;
 	
 	@Configuration(FILE = "Language", KEY = "GUI.FILTER.BUTTON.CLEAR")
-	private String guiFilterClearButton;
+	private Map<String, String> guiFilterClearButton;
 	
 	@Configuration(FILE = "Language", KEY = "GUI.BACKPACK.TITLE")
 	private String guiBackpackTitle;
@@ -119,8 +134,10 @@ public class LanguageManager {
 	
 				// -------------------- \\
 	
-	public String getFilterEnabledMessage() { return filterEnabledMessage; }
-	public String getFilterDisabledMessage() { return filterDisabledMessage; }
+	public String getFilterToggleEnabledMessage() { return filterToggleEnabledMessage; }
+	public String getFilterToggleDisabledMessage() { return filterToggleDisabledMessage; }
+	public String getFilterDestroyerEnabledMessage() { return filterDestroyerEnabledMessage; }
+	public String getFilterDestroyerDisabledMessage() { return filterDestroyerDisabledMessage; }
 	
 				// -------------------- \\
 	
@@ -154,9 +171,12 @@ public class LanguageManager {
 				// -------------------- \\
 	
 	public String getGUIFilterTitle() { return guiFilterTitle; }
-	public String getGUIFilterEnableButton() { return guiFilterEnableButton; }
-	public String getGUIFilterDisableButton() { return guiFilterDisableButton; }
-	public String getGUIFilterClearButton() { return guiFilterClearButton; }
+	public Map<String, String> getGUIFilterSeparatorButton() { return guiFilterSeparatorButton; }
+	public Map<String, String> getGUIFilterToggleEnableButton() { return guiFilterToggleEnableButton; }
+	public Map<String, String> getGUIFilterToggleDisableButton() { return guiFilterToggleDisableButton; }
+	public Map<String, String> getGUIFilterDestroyerEnableButton() { return guiFilterDestroyerEnableButton; }
+	public Map<String, String> getGUIFilterDestroyerDisableButton() { return guiFilterDestroyerDisableButton; }
+	public Map<String, String> getGUIFilterClearButton() { return guiFilterClearButton; }
 	public String getGUIBackpackTitle() { return guiBackpackTitle; }
 	public String getGUITrashTitle() { return guiTrashTitle; }
 
