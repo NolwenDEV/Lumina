@@ -20,7 +20,7 @@
 - 🛠️ | A set of utility commands to craft anywhere (/craft), return to your last death location (/back), safely trash items (/trash) and filter unwanted drops (/filter)
 - 💬 | Customizable event messages (When player join, quit or die) and customizable chat messages
 - 💥 | Ability to disable Creeper Griefing
-- 🌾 | Automatically replants seeds when harvested, supporting both player actions and automated farms, including modded crops
+- 🌾 | Automatically replants seeds when harvested, including modded crops
 - 🚧 | More incoming, stay in touch ! (Have an idea ? Contact me on Discord : @NolwenDEV)
 
 # ⚠️ | Requirements
