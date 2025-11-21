@@ -23,7 +23,12 @@ public class EntityPickupItem implements Listener {
 		if(Main.getInstance().getDataManager().getFilteredItems().get(player).isEmpty()) return;
 		
 		for (Material material : Main.getInstance().getDataManager().getFilteredItems().get(player)) {
-	        if(event.getItem().getItemStack().getType().equals(material)) { event.setCancelled(true); }
+	        if(event.getItem().getItemStack().getType().equals(material)) {
+	        	event.setCancelled(true);
+	        	if(Main.getInstance().getDataManager().getFilterDestroyerActive().containsKey(player)) {
+	        		if(Main.getInstance().getDataManager().getFilterDestroyerActive().get(player)) { event.getItem().remove(); }
+	        	}
+	        }
 	    }
 	}
 
