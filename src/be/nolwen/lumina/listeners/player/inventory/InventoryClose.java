@@ -9,7 +9,7 @@ import org.bukkit.inventory.ItemStack;
 
 import be.nolwen.lumina.Main;
 import be.nolwen.lumina.utilities.ItemSerializer;
-import be.nolwen.lumina.utilities.builder.MessageBuilder;
+import be.nolwen.lumina.utilities.Utils;
 import be.nolwen.lumina.utilities.enumeration.Query;
 
 public class InventoryClose implements Listener {
@@ -35,7 +35,7 @@ public class InventoryClose implements Listener {
 		}
 		
 		if(totalItems > 0) {
-			event.getPlayer().sendMessage(MessageBuilder.format(
+			event.getPlayer().sendMessage(Utils.format(
 					Main.getInstance().getLanguageManager().getTrashCounterMessage(),
 					Map.of("COUNT", String.valueOf(totalItems))
 			));

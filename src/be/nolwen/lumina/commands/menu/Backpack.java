@@ -10,9 +10,9 @@ import org.bukkit.inventory.ItemStack;
 
 import be.nolwen.lumina.Main;
 import be.nolwen.lumina.utilities.ItemSerializer;
+import be.nolwen.lumina.utilities.Utils;
 import be.nolwen.lumina.utilities.annotation.registrar.CommandRegistrar;
 import be.nolwen.lumina.utilities.builder.InventoryBuilder;
-import be.nolwen.lumina.utilities.builder.MessageBuilder;
 import be.nolwen.lumina.utilities.enumeration.Query;
 
 @CommandRegistrar(NAME = "backpack")
@@ -21,9 +21,9 @@ public class Backpack implements CommandExecutor {
 	@Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] arguments) {
 		if(!command.getName().equalsIgnoreCase("backpack")) return true;
-		if(!Main.getInstance().getConfigManager().isBackpackModule()) return MessageBuilder.error(sender, Main.getInstance().getLanguageManager().getFeatureDisabledError());
-		if(!Main.getInstance().getDatabaseManager().isEnabled()) return MessageBuilder.error(sender, Main.getInstance().getLanguageManager().getDatabaseDisabledError());
-		if(!(sender instanceof Player)) return MessageBuilder.error(sender, Main.getInstance().getLanguageManager().getPlayerOnlyCommandError());
+		if(!Main.getInstance().getConfigManager().isBackpackModule()) return Utils.error(sender, Main.getInstance().getLanguageManager().getFeatureDisabledError());
+		if(!Main.getInstance().getDatabaseManager().isEnabled()) return Utils.error(sender, Main.getInstance().getLanguageManager().getDatabaseDisabledError());
+		if(!(sender instanceof Player)) return Utils.error(sender, Main.getInstance().getLanguageManager().getPlayerOnlyCommandError());
 		
 		Player player = (Player) sender;
 		InventoryBuilder inventory = new InventoryBuilder(3, Main.getInstance().getLanguageManager().getGUIBackpackTitle());

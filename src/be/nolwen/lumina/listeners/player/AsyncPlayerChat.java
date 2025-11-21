@@ -9,7 +9,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
 
 import be.nolwen.lumina.Main;
-import be.nolwen.lumina.utilities.builder.MessageBuilder;
+import be.nolwen.lumina.utilities.Utils;
 
 public class AsyncPlayerChat implements Listener {
 	
@@ -28,7 +28,7 @@ public class AsyncPlayerChat implements Listener {
 		// ------------------------------ \\
 	
 	private String getFormattedMessage(AsyncPlayerChatEvent event) {
-		return MessageBuilder.format(
+		return Utils.format(
 				Main.getInstance().getConfigManager().getChatFormat(),
 				Map.of(
 						"CHAT_PREFIX", Main.getInstance().getConfigManager().getChatPrefixes().getOrDefault(

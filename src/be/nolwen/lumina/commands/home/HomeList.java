@@ -10,8 +10,8 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 import be.nolwen.lumina.Main;
+import be.nolwen.lumina.utilities.Utils;
 import be.nolwen.lumina.utilities.annotation.registrar.CommandRegistrar;
-import be.nolwen.lumina.utilities.builder.MessageBuilder;
 import be.nolwen.lumina.utilities.builder.TextComponentBuilder;
 import be.nolwen.lumina.utilities.enumeration.Query;
 import net.md_5.bungee.api.chat.ClickEvent;
@@ -24,20 +24,20 @@ public class HomeList implements CommandExecutor {
 	@Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] arguments) {
 		if(!command.getName().equals("homes")) return true;
-		if(!Main.getInstance().getConfigManager().isHomeModule()) return MessageBuilder.error(sender, Main.getInstance().getLanguageManager().getFeatureDisabledError());
-		if(!Main.getInstance().getDatabaseManager().isEnabled()) return MessageBuilder.error(sender, Main.getInstance().getLanguageManager().getDatabaseDisabledError());
-		if(!(sender instanceof Player)) return MessageBuilder.error(sender, Main.getInstance().getLanguageManager().getPlayerOnlyCommandError());
+		if(!Main.getInstance().getConfigManager().isHomeModule()) return Utils.error(sender, Main.getInstance().getLanguageManager().getFeatureDisabledError());
+		if(!Main.getInstance().getDatabaseManager().isEnabled()) return Utils.error(sender, Main.getInstance().getLanguageManager().getDatabaseDisabledError());
+		if(!(sender instanceof Player)) return Utils.error(sender, Main.getInstance().getLanguageManager().getPlayerOnlyCommandError());
 		
 		Player player = (Player) sender;
 		
 		Main.getInstance().getSQLManager().executeQuery(Query.RETRIEVE_HOME, (result) -> {
 			if(!result.isEmpty()) {						
-				player.sendMessage(MessageBuilder.format(Main.getInstance().getLanguageManager().getListHomesMessage().get("MESSAGE")));
+				player.sendMessage(Utils.format(Main.getInstance().getLanguageManager().getListHomesMessage().get("MESSAGE")));
 				
 				List<TextComponent> textComponents = new ArrayList<>();
 				for(Map<String, Object> home : result) {
 					textComponents.add(new TextComponentBuilder().setMessage(
-							MessageBuilder.format(
+							Utils.format(
 									Main.getInstance().getLanguageManager().getListHomesMessage().get("HOMES"),
 									Map.of(
 											"WORLD", home.get("WORLD").toString(),
@@ -47,13 +47,13 @@ public class HomeList implements CommandExecutor {
 											"Z", String.format("%.2f", (double) home.get("Z"))
 									)
 							)
-					).setHoverEvent(HoverEvent.Action.SHOW_TEXT, MessageBuilder.format(
+					).setHoverEvent(HoverEvent.Action.SHOW_TEXT, Utils.format(
 							Main.getInstance().getLanguageManager().getHomeHoverMessage(), Map.of("HOME", home.get("NAME").toString())
 					)).setClickAction(ClickEvent.Action.RUN_COMMAND, String.format("/home %s", home.get("NAME"))).build());
 				}
 				
 				for(TextComponent textComponent : textComponents) { player.spigot().sendMessage(new TextComponentBuilder().compose(textComponent).build()); }
-			} else { player.sendMessage(MessageBuilder.format(Main.getInstance().getLanguageManager().getHomeNotFoundError())); }
+			} else { player.sendMessage(Utils.format(Main.getInstance().getLanguageManager().getHomeNotFoundError())); }
 		}, player.getUniqueId().toString(), player.getName());
 		
 		return true;

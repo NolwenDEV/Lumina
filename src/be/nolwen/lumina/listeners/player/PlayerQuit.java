@@ -7,13 +7,13 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerQuitEvent;
 
 import be.nolwen.lumina.Main;
-import be.nolwen.lumina.utilities.builder.MessageBuilder;
+import be.nolwen.lumina.utilities.Utils;
 
 public class PlayerQuit implements Listener {
 
 	@EventHandler
 	public void onPlayerQuit(PlayerQuitEvent event) {
-		event.setQuitMessage(MessageBuilder.format(
+		event.setQuitMessage(Utils.format(
 				Main.getInstance().getLanguageManager().getEventQuit(),
 				Map.of("PLAYER", event.getPlayer().getName())
 		));

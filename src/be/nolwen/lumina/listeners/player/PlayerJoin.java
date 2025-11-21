@@ -9,14 +9,14 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 
 import be.nolwen.lumina.Main;
-import be.nolwen.lumina.utilities.builder.MessageBuilder;
+import be.nolwen.lumina.utilities.Utils;
 import be.nolwen.lumina.utilities.enumeration.Query;
 
 public class PlayerJoin implements Listener {
 
 	@EventHandler
 	public void onPlayerJoin(PlayerJoinEvent event) {
-		event.setJoinMessage(MessageBuilder.format(
+		event.setJoinMessage(Utils.format(
 				Main.getInstance().getLanguageManager().getEventJoin(),
 				Map.of("PLAYER", event.getPlayer().getName())
 		));
