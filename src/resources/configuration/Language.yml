@@ -26,7 +26,14 @@ MESSAGE:
         DESTROYER:
             ENABLED: "{PREFIX} &7Ground items that are on your filter will &astart being destroyed &7!"
             DISABLED: "{PREFIX} &7Ground items that are on your filter will &cstop being destroyed &7!"
+            
+    TELEPORTATION:
+        REQUEST_SENT: "{PREFIX} &7A teleportation request has been sent to &d{PLAYER} &7!"
+        REQUEST_RECEIVED: "{PREFIX} &7You've received a teleportation request from &d{PLAYER}&7, do &8/&f{COMMAND} &d{PLAYER} &7to &aaccept &7!"
         
+        TELEPORTED_TO: "{PREFIX} &7You've been teleported to &d{PLAYER} &7!"
+        TELEPORTED_AT: "{PREFIX} &d{PLAYER} &7has been teleported at your location !"
+            
     BACK:
         REMINDER: "{PREFIX} &7Use &8/&dback &7to return to your last death location !"
         
@@ -38,25 +45,39 @@ ERROR:
     FEATURE_DISABLED: "{PREFIX} &cThis feature has been disabled in configuration file !"
     DATABASE_DISABLED: "{PREFIX} &cDatabase is disabled, this feature has been disabled !"
     
-    BACK:
-        NOT_DEAD: "{PREFIX} &cYou're not dead recently !"
-        
-    FILTER:
-        NO_DUPLICATE_ITEM: "{PREFIX} &cYou're not allowed to put the same item in the filter twice !"
-        
+    PLAYER_NOT_FOUND: "{PREFIX} &cPlayer not found !"
+    OFFLINE_PLAYER: "{PREFIX} &cThis player is not online !"
+    
     HOME:
         EMPTY_LIST: "{PREFIX} &cYou don't own any home !"
         NOT_FOUND: "{PREFIX} &cYou don't own any home using this name !"
         
-    BACKPACK:
-        SAVE_FAIL: "{PREFIX} &cAn error has occured, your backpack couldn't be saved !"
+    FILTER:
+        NO_DUPLICATE_ITEM: "{PREFIX} &cYou're not allowed to put the same item in the filter twice !"
+    
+    MESSAGE:
+        NO_REPLIER: "{PREFIX} &cYou've no one to reply to !"
+        CANNOT_MESSAGE_YOURSELF: "{PREFIX} &cYou can't send a private message to yourself !"
+        
+    TELEPORTATION:
+        CANNOT_TELEPORT_YOURSELF: "{PREFIX} &cYou can't send a teleportation request to yourself !"
+        
+    BACK:
+        NOT_DEAD: "{PREFIX} &cYou're not dead recently !"
         
     COMMAND_USAGE:
         LUMINA: "{PREFIX} &cUsage &8: &7/&flumina &8<&7parameter&8>"
-        SET_HOME: "{PREFIX} &cUsage &8: &7/&fsethome &8<&7name&8>"
-        DEL_HOME: "{PREFIX} &cUsage &8: &7/&fdelhome &8<&7name&8>"
+        
         HOME: "{PREFIX} &cUsage &8: &7/&fhome &8<&7name&8>"
-            
+        DEL_HOME: "{PREFIX} &cUsage &8: &7/&fdelhome &8<&7name&8>"
+        SET_HOME: "{PREFIX} &cUsage &8: &7/&fsethome &8<&7name&8>"
+        
+        MESSAGE: "{PREFIX} &cUsage &8: &7/&fmsg &8<&7player&8> &8<&7message&8>"
+        REPLY: "{PREFIX} &cUsage &8: &7/&fr &8<&7message&8>"
+        
+        TELEPORT_HERE: "{PREFIX} &cUsage &8: &7/&ftphere &8<&7player&8>"
+        TELEPORT_TO: "{PREFIX} &cUsage &8: &7/&ftpto &8<&7player&8>"
+      
 EVENT:
     JOIN: "&8[&a+&8] &f{PLAYER}"
     QUIT: "&8[&4-&8] &f{PLAYER}"

@@ -1,5 +1,5 @@
 name: Lumina
-version: 1.0.3
+version: 1.0.4
 
 author: Nolwen
 description: Lumina brings light to your server, a toolkit of versatile features designed to refine, connect, and enhance your world
@@ -23,6 +23,29 @@ commands:
     delhome:
         description: Remove one of your marked location
         usage: "/delhome <name>"
+    backpack:
+        description: Access your portable storage
+        usage: "/backpack"
+        aliases: bp
+    filter:
+        description: Choose which items you automatically ignore when picking up
+        usage: "/filter"
+    message:
+        description: Whisper to another player's ears
+        usage: "/message <name> <message>"
+        aliases: [msg, m]
+    reply:
+        description: Reply to another player's whispers
+        usage: "/reply <message>"
+        aliases: r
+    teleporthere:
+        description: Invite a player to come to your position / accept their invite
+        usage: "/teleporthere <player>"
+        aliases: [tphere, tpahere]
+    teleportto:
+        description: Travel instantly to another player / accept their request
+        usage: "/teleportto <player>"
+        aliases: [tpto, tpa]
     back:
         description: Return to the last place you stood before moving on
         usage: "/back"
@@ -33,10 +56,3 @@ commands:
     trash:
         description: Dispose of unwanted items instantly
         usage: "/trash"
-    filter:
-        description: Choose which items you automatically ignore when picking up
-        usage: "/filter"
-    backpack:
-        description: Access your portable storage
-        usage: "/backpack"
-        aliases: bp
