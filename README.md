@@ -15,14 +15,14 @@
 
 - 🏚️ | A home system allowing players to set, teleport to, and manage their personal locations within the game. It makes traveling faster and helps players organize their bases or favorite spots
 - 🎒 | A backpack system gives players a personal portable inventory, allowing them to store and carry extra items beyond their main inventory
-- ✉️ | A private messaging system allows players to send direct messages to each other, enabling private conversations without using public chat [WIP]
-- ✈️ | A player teleportation system allowing players to request to teleport to each other (/tpto) or invite others to teleport to them (/tphere), making meeting up in the game quick and easy [WIP]
+- ✉️ | A private messaging system allows players to send direct messages to each other, enabling private conversations without using public chat
+- ✈️ | A player teleportation system allowing players to request to teleport to each other (/tpto) or invite others to teleport to them (/tphere), making meeting up in the game quick and easy
 - 🛠️ | A set of utility commands to craft anywhere (/craft), return to your last death location (/back), safely trash items (/trash) and filter unwanted drops (/filter)
 - 💬 | Customizable event messages (When player join, quit or die) and customizable chat messages
 - 💥 | Ability to disable Creeper Griefing
 - 🌾 | Automatically replants seeds when harvested, including modded crops
 - ♻️ | Auto-Updater who check for update when server starts and every 6 hours
-- 🚧 | More incoming, stay in touch ! (Have an idea ? Contact me on Discord : @NolwenDEV)
+- 🚧 | More incoming, stay in touch ! (Have an idea ? Contact me on Discord : [@NolwenDEV](https://discord.com/users/564087424754647051))
 
 # ⚠️ | Requirements
 
