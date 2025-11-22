@@ -21,6 +21,8 @@ import be.nolwen.lumina.Main;
 public class Updater {
 	
 	public void checkForUpdate() {
+		if(Main.getInstance().getDataManager().isUpdateFound()) return;
+		
 		Bukkit.getScheduler().runTaskAsynchronously(Main.getInstance(), () -> {
 			ReleaseInformation latest = getLatestRelease();
 			if(latest == null) {
@@ -41,6 +43,7 @@ public class Updater {
 				Main.getInstance().getLogger().info("✅ | Update successfully downloaded !");
 				backup();
 				Main.getInstance().getLogger().info("✅ | Restart the server to apply it !");
+				Main.getInstance().getDataManager().setUpdateFound(true);
 			} else { Main.getInstance().getLogger().warning("⚠️ | Download failed !"); }
 		});
 	}

@@ -25,6 +25,8 @@ public class DataManager {
 	private Map<Player, Boolean> filterActive;
 	private Map<Player, Boolean> filterDestroyerActive;
 	
+	private boolean updateFound;
+	
 		// ---------------------------------------- \\
 	
 	public DataManager() {
@@ -34,6 +36,8 @@ public class DataManager {
 		this.filteredItems = new HashMap<>();
 		this.filterActive = new HashMap<>();
 		this.filterDestroyerActive = new HashMap<>();
+		
+		this.updateFound = false;
 	}
 	
 		// ---------------------------------------- \\
@@ -46,5 +50,8 @@ public class DataManager {
 	public Map<Player, Set<Material>> getFilteredItems() { return filteredItems; }
 	public Map<Player, Boolean> getFilterActive() { return filterActive; }
 	public Map<Player, Boolean> getFilterDestroyerActive() { return filterDestroyerActive; }
+	
+	public boolean isUpdateFound() { return updateFound; }
+	public void setUpdateFound(boolean updateFound) { this.updateFound = updateFound; }
 
 }
