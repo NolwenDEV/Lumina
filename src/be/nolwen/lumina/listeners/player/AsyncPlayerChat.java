@@ -29,7 +29,7 @@ public class AsyncPlayerChat implements Listener {
 	
 	private String getFormattedMessage(AsyncPlayerChatEvent event) {
 		return Utils.format(
-				Main.getInstance().getConfigManager().getChatFormat(),
+				Main.getInstance().getConfigManager().getChatPublicFormat(),
 				Map.of(
 						"CHAT_PREFIX", Main.getInstance().getConfigManager().getChatPrefixes().getOrDefault(
 								event.getPlayer().getName(),

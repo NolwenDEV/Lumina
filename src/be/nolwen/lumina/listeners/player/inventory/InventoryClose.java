@@ -44,11 +44,10 @@ public class InventoryClose implements Listener {
 	}
 	
 	private void backpackManager(InventoryCloseEvent event) {
-		if(!Main.getInstance().getConfigManager().isTrashModule()) return;
+		if(!Main.getInstance().getConfigManager().isBackpackModule()) return;
 		
 		Main.getInstance().getSQLManager().executeQuery(Query.UPDATE_BACKPACK, ItemSerializer.serializeList(event.getInventory().getContents()),
-				event.getPlayer().getUniqueId().toString(),
-				event.getPlayer().getName()
+				event.getPlayer().getUniqueId().toString(), event.getPlayer().getName()
 		);
 	}
 
