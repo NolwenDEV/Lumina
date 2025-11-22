@@ -1,4 +1,4 @@
-package be.nolwen.lumina.commands.utilities;
+package be.nolwen.lumina.commands.menu;
 
 import org.bukkit.Material;
 import org.bukkit.command.Command;
