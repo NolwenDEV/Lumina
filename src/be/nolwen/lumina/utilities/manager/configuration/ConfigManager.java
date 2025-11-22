@@ -30,6 +30,9 @@ public class ConfigManager {
 	@Configuration(FILE = "Configuration", KEY = "MODULE.COMMAND.PRIVATE_MESSAGE")
 	private boolean privateMessageModule;
 	
+	@Configuration(FILE = "Configuration", KEY = "MODULE.COMMAND.TELEPORTATION")
+	private boolean teleportationModule;
+	
 	@Configuration(FILE = "Configuration", KEY = "MODULE.COMMAND.BACKPACK")
 	private boolean backpackModule;
 	
@@ -50,8 +53,14 @@ public class ConfigManager {
 	
 				// -------------------- \\
 		
-	@Configuration(FILE = "Configuration", KEY = "CHAT.FORMAT")
-	private String chatFormat;
+	@Configuration(FILE = "Configuration", KEY = "CHAT.FORMAT.PUBLIC")
+	private String chatPublicFormat;
+	
+	@Configuration(FILE = "Configuration", KEY = "CHAT.FORMAT.PRIVATE.SENT")
+	private String chatPrivateSentFormat;
+	
+	@Configuration(FILE = "Configuration", KEY = "CHAT.FORMAT.PRIVATE.RECEIVED")
+	private String chatPrivateReceivedFormat;
 	
 	@Configuration(FILE = "Configuration", KEY = "CHAT.PREFIXES")
 	private Map<String, String> chatPrefixes = new HashMap<>();
@@ -69,6 +78,7 @@ public class ConfigManager {
 	public boolean isCropReplanterModule() { return cropReplanterModule; }
 	
 	public boolean isPrivateMessageModule() { return privateMessageModule; }
+	public boolean isTeleportationModule() { return teleportationModule; }
 	public boolean isBackpackModule() { return backpackModule; }
 	public boolean isFilterModule() { return filterModule; }
 	public boolean isTrashModule() { return trashModule; }
@@ -78,7 +88,9 @@ public class ConfigManager {
 	
 				// -------------------- \\
 	
-	public String getChatFormat() { return chatFormat; }
+	public String getChatPublicFormat() { return chatPublicFormat; }
+	public String getChatPrivateSentFormat() { return chatPrivateSentFormat; }
+	public String getChatPrivateReceivedFormat() { return chatPrivateReceivedFormat; }
 	public Map<String, String> getChatPrefixes() { return chatPrefixes; }
 
 }

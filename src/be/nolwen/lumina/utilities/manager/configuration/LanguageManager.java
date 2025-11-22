@@ -38,8 +38,22 @@ public class LanguageManager {
 	
 				// -------------------- \\
 	
+	@Configuration(FILE = "Language", KEY = "MESSAGE.TELEPORTATION.REQUEST_SENT")
+	private String teleportationRequestSentMessage;
+	
+	@Configuration(FILE = "Language", KEY = "MESSAGE.TELEPORTATION.REQUEST_RECEIVED")
+	private String teleportationRequestReceivedMessage;
+	
+	@Configuration(FILE = "Language", KEY = "MESSAGE.TELEPORTATION.TELEPORTED_TO")
+	private String teleportToMessage;
+	
+	@Configuration(FILE = "Language", KEY = "MESSAGE.TELEPORTATION.TELEPORTED_AT")
+	private String teleportAtMessage;
+	
 	@Configuration(FILE = "Language", KEY = "MESSAGE.BACK.REMINDER")
 	private String backReminderMessage;
+	
+				// -------------------- \\
 	
 	@Configuration(FILE = "Language", KEY = "MESSAGE.TRASH.COUNTER")
 	private String trashCounterMessage;
@@ -55,11 +69,11 @@ public class LanguageManager {
 	@Configuration(FILE = "Language", KEY = "ERROR.DATABASE_DISABLED")
 	private String databaseDisabledError;
 	
-	@Configuration(FILE = "Language", KEY = "ERROR.BACK.NOT_DEAD")
-	private String backNotDeadError;
+	@Configuration(FILE = "Language", KEY = "ERROR.PLAYER_NOT_FOUND")
+	private String playerNotFoundError;
 	
-	@Configuration(FILE = "Language", KEY = "ERROR.FILTER.NO_DUPLICATE_ITEM")
-	private String filterNoDuplicateItemError;
+	@Configuration(FILE = "Language", KEY = "ERROR.OFFLINE_PLAYER")
+	private String offlinePlayerError;
 	
 	@Configuration(FILE = "Language", KEY = "ERROR.HOME.EMPTY_LIST")
 	private String homeEmptyError;
@@ -67,22 +81,46 @@ public class LanguageManager {
 	@Configuration(FILE = "Language", KEY = "ERROR.HOME.NOT_FOUND")
 	private String homeNotFoundError;
 	
-	@Configuration(FILE = "Language", KEY = "ERROR.BACKPACK.SAVE_FAIL")
-	private String backpackSaveFailError;
+	@Configuration(FILE = "Language", KEY = "ERROR.FILTER.NO_DUPLICATE_ITEM")
+	private String filterNoDuplicateItemError;
+	
+	@Configuration(FILE = "Language", KEY = "ERROR.MESSAGE.NO_REPLIER")
+	private String messageNoReplierError;
+	
+	@Configuration(FILE = "Language", KEY = "ERROR.MESSAGE.CANNOT_MESSAGE_YOURSELF")
+	private String messageCannotMessageYourselfError;
+	
+	@Configuration(FILE = "Language", KEY = "ERROR.TELEPORTATION.CANNOT_TELEPORT_YOURSELF")
+	private String teleportationCannotTeleportYourself;
+	
+	@Configuration(FILE = "Language", KEY = "ERROR.BACK.NOT_DEAD")
+	private String backNotDeadError;
 	
 				// -------------------- \\
 	
 	@Configuration(FILE = "Language", KEY = "ERROR.COMMAND_USAGE.LUMINA")
 	private String luminaUsageError;
 	
-	@Configuration(FILE = "Language", KEY = "ERROR.COMMAND_USAGE.SET_HOME")
-	private String setHomeUsageError;
+	@Configuration(FILE = "Language", KEY = "ERROR.COMMAND_USAGE.HOME")
+	private String homeUsageError;
 	
 	@Configuration(FILE = "Language", KEY = "ERROR.COMMAND_USAGE.DEL_HOME")
 	private String delHomeUsageError;
 	
-	@Configuration(FILE = "Language", KEY = "ERROR.COMMAND_USAGE.HOME")
-	private String homeUsageError;
+	@Configuration(FILE = "Language", KEY = "ERROR.COMMAND_USAGE.SET_HOME")
+	private String setHomeUsageError;
+	
+	@Configuration(FILE = "Language", KEY = "ERROR.COMMAND_USAGE.MESSAGE")
+	private String messageUsageError;
+	
+	@Configuration(FILE = "Language", KEY = "ERROR.COMMAND_USAGE.REPLY")
+	private String replyUsageError;
+	
+	@Configuration(FILE = "Language", KEY = "ERROR.COMMAND_USAGE.TELEPORT_HERE")
+	private String teleportHereUsageError;
+	
+	@Configuration(FILE = "Language", KEY = "ERROR.COMMAND_USAGE.TELEPORT_TO")
+	private String teleportToUsageError;
 	
 				 // -------------------- \\
 	
@@ -141,7 +179,14 @@ public class LanguageManager {
 	
 				// -------------------- \\
 	
+	public String getTeleportationRequestSentMessage() { return teleportationRequestSentMessage; }
+	public String getTeleportationRequestReceivedMessage() { return teleportationRequestReceivedMessage; }
+	public String getTeleportedToMessage() { return teleportToMessage; }
+	public String getTeleportedAtMessage() { return teleportAtMessage; }
 	public String getBackReminderMessage() { return backReminderMessage; }
+	
+				// -------------------- \\
+	
 	public String getTrashCounterMessage() { return trashCounterMessage; }
 	
 				// -------------------- \\
@@ -149,18 +194,27 @@ public class LanguageManager {
 	public String getPlayerOnlyCommandError() { return playerOnlyCommandError; }
 	public String getFeatureDisabledError() { return featureDisabledError; }
 	public String getDatabaseDisabledError() { return databaseDisabledError; }
-	public String getBackNotDeadError() { return backNotDeadError; }
-	public String getFilterNoDuplicateItemError() { return filterNoDuplicateItemError; }
+	
+	public String getPlayerNotFoundError() { return playerNotFoundError; }
+	public String getOfflinePlayerError() { return offlinePlayerError; }
 	public String getHomeEmptyError() { return homeEmptyError; }
 	public String getHomeNotFoundError() { return homeNotFoundError; }
-	public String getBackpackSaveFailError() { return backpackSaveFailError; }
+	public String getFilterNoDuplicateItemError() { return filterNoDuplicateItemError; }
+	public String getMessageNoReplierError() { return messageNoReplierError; }
+	public String getMessageCannotMessageYourselfError() { return messageCannotMessageYourselfError; }
+	public String getTeleportationCannotTeleportYourselfError() { return teleportationCannotTeleportYourself; }
+	public String getBackNotDeadError() { return backNotDeadError; }
 	
 				// -------------------- \\
 	
 	public String getLuminaUsageError() { return luminaUsageError; }
-	public String getSetHomeUsageError() { return setHomeUsageError; }
-	public String getDelHomeUsageError() { return delHomeUsageError; }
 	public String getHomeUsageError() { return homeUsageError; }
+	public String getDelHomeUsageError() { return delHomeUsageError; }
+	public String getSetHomeUsageError() { return setHomeUsageError; }
+	public String getMessageUsageError() { return messageUsageError; }
+	public String getReplyUsageError() { return replyUsageError; }
+	public String getTeleportHereUsageError() { return teleportHereUsageError; }
+	public String getTeleportToUsageError() { return teleportToUsageError; }
 	
 				// -------------------- \\
 	
