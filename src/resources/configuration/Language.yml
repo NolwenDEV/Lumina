@@ -125,6 +125,7 @@ GUI:
             
     BACKPACK:
         TITLE: "&dBackpack"
+        SIZE: 3
         
     TRASH:
         TITLE: "&dTrash"

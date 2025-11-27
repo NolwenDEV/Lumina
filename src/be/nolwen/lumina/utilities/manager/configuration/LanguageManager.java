@@ -159,6 +159,9 @@ public class LanguageManager {
 	@Configuration(FILE = "Language", KEY = "GUI.BACKPACK.TITLE")
 	private String guiBackpackTitle;
 	
+	@Configuration(FILE = "Language", KEY = "GUI.BACKPACK.SIZE")
+	private int guiBackpackSize;
+	
 	@Configuration(FILE = "Language", KEY = "GUI.TRASH.TITLE")
 	private String guiTrashTitle;
 	
@@ -232,6 +235,7 @@ public class LanguageManager {
 	public Map<String, String> getGUIFilterDestroyerDisableButton() { return guiFilterDestroyerDisableButton; }
 	public Map<String, String> getGUIFilterClearButton() { return guiFilterClearButton; }
 	public String getGUIBackpackTitle() { return guiBackpackTitle; }
+	public int getGUIBackpackSize() { return guiBackpackSize; }
 	public String getGUITrashTitle() { return guiTrashTitle; }
 
 }
