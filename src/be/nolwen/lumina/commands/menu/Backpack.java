@@ -26,7 +26,10 @@ public class Backpack implements CommandExecutor {
 		if(!(sender instanceof Player)) return Utils.error(sender, Main.getInstance().getLanguageManager().getPlayerOnlyCommandError());
 		
 		Player player = (Player) sender;
-		InventoryBuilder inventory = new InventoryBuilder(3, Main.getInstance().getLanguageManager().getGUIBackpackTitle());
+		InventoryBuilder inventory = new InventoryBuilder(
+				Main.getInstance().getLanguageManager().getGUIBackpackSize(),
+				Main.getInstance().getLanguageManager().getGUIBackpackTitle()
+		);
 		
 		Main.getInstance().getSQLManager().executeQuery(Query.RETRIEVE_BACKPACK, (result) -> {
 			if(!result.isEmpty()) {
