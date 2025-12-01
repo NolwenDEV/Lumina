@@ -8,6 +8,13 @@
 # -------------------------------------------------------------------------------------------------------------------------------------------- #
 
 MESSAGE:
+    AUTHENTICATION:
+        REGISTER: "{PREFIX} &7Use &8/&fregister &8<&7password&8> &7{CAPTCHA} &7to register !"
+        LOGIN: "{PREFIX} &7Use &8/&flogin &8<&7password&8> &7{CAPTCHA} &7to register !"
+        
+        SUCCESSFULLY_REGISTERED: "{PREFIX} &7You've been successfully registered, your session is valid for &d7 days &7!"
+        SUCCESSFULLY_LOGGED_IN: "{PREFIX} &7You've been successfully logged-in, your session is valid for &d7 days &7!"
+        
     HOME:
         CREATED: "{PREFIX} &7Home &d{HOME} &7successfully created !"
         DELETED: "{PREFIX} &7Home &d{HOME} &7successfully deleted !"
@@ -48,9 +55,20 @@ ERROR:
     PLAYER_NOT_FOUND: "{PREFIX} &cPlayer not found !"
     OFFLINE_PLAYER: "{PREFIX} &cThis player is not online !"
     
+    AUTHENTICATION:
+        WRONG_PASSWORD: "{PREFIX} &cThe password you entered is wrong !"
+        WRONG_CAPTCHA: "{PREFIX} &cThe captcha you entered is wrong !"
+        
+        NOT_REGISTERED: "{PREFIX} &cYou're not registered, use &7/&fregister &8<&7password&8> &8<&7captcha&8> &7instead !"
+        ALREADY_REGISTERED: "{PREFIX} &cYou're already registered, use &7/&flogin &8<&7password&8> &8<&7captcha&8> &7instead !"
+        ALREADY_LOGGED_IN: "{PREFIX} &cYou're already logged-in !"
+        
+        PASSWORD_TOO_LONG: "{PREFIX} &cYour password can't be longer than 24 characters !"
+    
     HOME:
         EMPTY_LIST: "{PREFIX} &cYou don't own any home !"
         NOT_FOUND: "{PREFIX} &cYou don't own any home using this name !"
+        NAME_TOO_LONG: "{PREFIX} &cThe name can't be longer than 16 characters !"
         
     FILTER:
         NO_DUPLICATE_ITEM: "{PREFIX} &cYou're not allowed to put the same item in the filter twice !"
@@ -67,6 +85,9 @@ ERROR:
         
     COMMAND_USAGE:
         LUMINA: "{PREFIX} &cUsage &8: &7/&flumina &8<&7parameter&8>"
+        
+        REGISTER: "{PREFIX} &cUsage &8: &7/&fregister &8<&7password&8> &8<&7captcha&8>"
+        LOGIN: "{PREFIX} &cUsage &8: &7/&flogin &8<&7password&8> &8<&7captcha&8>"
         
         HOME: "{PREFIX} &cUsage &8: &7/&fhome &8<&7name&8>"
         DEL_HOME: "{PREFIX} &cUsage &8: &7/&fdelhome &8<&7name&8>"

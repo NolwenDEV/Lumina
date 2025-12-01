@@ -8,12 +8,15 @@
 # -------------------------------------------------------------------------------------------------------------------------------------------- #
 
 PREFIX: "&dLumina &8●"
-VERSION: "1.0.5"
+VERSION: "1.0.6"
 
 # -------------------------------------------------------------------------------------------------------------------------------------------- #
 
 MODULE: 
     PREMIUM: true
+    
+    AUTHENTICATION: true
+    WHITELIST: true
     
     CHAT: true
     CREEPER_GRIEFING: true
@@ -38,6 +41,7 @@ CHAT:
         PRIVATE:
             SENT: "&8[&7To &8: &5{PLAYER}&8] &7{MESSAGE}"
             RECEIVED: "&8[&7From &8: &5{PLAYER}&8] &d{MESSAGE}"
+            
     PREFIXES:
         DEFAULT: "&7Player"
                 
