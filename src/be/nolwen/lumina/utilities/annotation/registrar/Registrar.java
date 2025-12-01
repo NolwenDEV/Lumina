@@ -8,6 +8,7 @@ import org.bukkit.command.PluginCommand;
 import org.bukkit.event.Listener;
 
 import be.nolwen.lumina.Main;
+import net.dv8tion.jda.api.hooks.ListenerAdapter;
 
 public class Registrar {
 	
@@ -39,15 +40,28 @@ public class Registrar {
 	
 	public void registerListeners(String packageName) {
 		try {
-			int counter = 0;
+			int spigotCounter = 0;
+			int jdaCounter = 0;
+			
 			for(Class<?> instance : getClasses(packageName)) {
-				if(!Listener.class.isAssignableFrom(instance)) continue;
+				if(Listener.class.isAssignableFrom(instance)) {
+					spigotCounter++;
+					Main.getInstance().getServer().getPluginManager().registerEvents((Listener) instance.getDeclaredConstructor().newInstance(), Main.getInstance());
+					
+					continue;
+				}
 				
-				counter++;
-				Main.getInstance().getServer().getPluginManager().registerEvents((Listener) instance.getDeclaredConstructor().newInstance(), Main.getInstance());
+				if(Main.getInstance().getDiscordManager().isEnabled() && Main.getInstance().getDiscordAPI() != null && ListenerAdapter.class.isAssignableFrom(instance)) {
+					jdaCounter++;
+					Main.getInstance().getDiscordAPI().addEventListener(instance.getDeclaredConstructor().newInstance());
+					
+					continue;
+				}				
 			}
 			
-			Main.getInstance().getLogger().info(String.format("✅ | A total of %s listeners has been successfully registered !", counter));
+			Main.getInstance().getLogger().info(String.format(
+					"✅ | A total of %s Spigot and %s Discord listeners has been successfully registered !", spigotCounter, jdaCounter
+			));
 		} catch(Exception exception) {
 			Main.getInstance().getLogger().severe(String.format("⚠️ | An error has occured while registering listeners : %s", exception.getMessage()));
 		}
