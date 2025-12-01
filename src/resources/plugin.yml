@@ -1,5 +1,5 @@
 name: Lumina
-version: 1.0.4
+version: 1.0.6
 
 author: Nolwen
 description: Lumina brings light to your server, a toolkit of versatile features designed to refine, connect, and enhance your world
@@ -12,6 +12,12 @@ commands:
     lumina:
         description: Access Lumina's Settings
         usage: "/lumina <parameter>"
+    register:
+        description: Register your account on the serveur
+        usage: "/register <password> <captcha>"
+    login:
+        description: Log-in on the server
+        usage: "/login <password> <captcha>"
     home:
         description: Return to one of your saved spots
         usage: "/home <name>"
