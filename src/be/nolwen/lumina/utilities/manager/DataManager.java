@@ -24,6 +24,8 @@ public class DataManager {
 	private Map<Player, Set<Material>> filteredItems;
 	private Map<Player, Boolean> filterActive;
 	private Map<Player, Boolean> filterDestroyerActive;
+	private Map<Player, Boolean> restrictedPlayers;
+	private Map<Player, String> captcha;
 	
 	private boolean updateFound;
 	
@@ -36,6 +38,8 @@ public class DataManager {
 		this.filteredItems = new HashMap<>();
 		this.filterActive = new HashMap<>();
 		this.filterDestroyerActive = new HashMap<>();
+		this.restrictedPlayers = new HashMap<>();
+		this.captcha = new HashMap<>();
 		
 		this.updateFound = false;
 	}
@@ -50,6 +54,8 @@ public class DataManager {
 	public Map<Player, Set<Material>> getFilteredItems() { return filteredItems; }
 	public Map<Player, Boolean> getFilterActive() { return filterActive; }
 	public Map<Player, Boolean> getFilterDestroyerActive() { return filterDestroyerActive; }
+	public Map<Player, Boolean> getRestrictedPlayers() { return restrictedPlayers; }
+	public Map<Player, String> getCaptcha() { return captcha; }
 	
 	public boolean isUpdateFound() { return updateFound; }
 	public void setUpdateFound(boolean updateFound) { this.updateFound = updateFound; }
