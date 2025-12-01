@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -44,10 +45,7 @@ public class SQLManager {
 						Main.getInstance().getDatabaseManager().getHostname(), Main.getInstance().getDatabaseManager().getName()
 				), Main.getInstance().getDatabaseManager().getUsername(), Main.getInstance().getDatabaseManager().getPassword());
 				
-				database.createStatement().execute(Query.CREATE_PLAYERS_TABLE.getQuery());
-				database.createStatement().execute(Query.CREATE_HOMES_TABLE.getQuery());
-				database.createStatement().execute(Query.CREATE_BACKPACK_TABLE.getQuery());
-				
+				updateTables();
 				flushPendingQueries();
 				
 				Main.getInstance().getLogger().info("✅ | Connection with the database successfully established !");
@@ -66,6 +64,47 @@ public class SQLManager {
 			Main.getInstance().getLogger().severe(String.format("⚠️ | An error has occurred while disconnecting from the database : %s", exception.getMessage()));
 		}
 	}
+	
+		// ---------------------------------------- \\
+	
+	private void updateTables() {
+        executeQuery(Query.CREATE_PLAYERS_TABLE);
+        executeQuery(Query.CREATE_HOMES_TABLE);
+        executeQuery(Query.CREATE_BACKPACK_TABLE);
+        
+        HashMap<String, Map<String, String>> expectedColums = new HashMap<String, Map<String, String>>() {{
+                put("PLAYERS", Map.of(
+                		"UUID", "VARCHAR(36)",
+                		"USERNAME", "VARCHAR(16)",
+                		"IP", "VARCHAR(45)",
+                		"PASSWORD", "VARCHAR(255)",
+                		"CONNECTED", "BOOLEAN",
+                		"LAST_SEEN", "DATETIME"
+                ));
+                put("HOMES", Map.of(
+                		"LINKED_ID", "INT",
+                		"NAME", "VARCHAR(16)",
+                		"WORLD", "VARCHAR(64)",
+                		"X", "DOUBLE", "Y", "DOUBLE", "Z", "DOUBLE",
+                		"YAW", "FLOAT", "PITCH", "FLOAT"
+                ));
+                put("BACKPACKS", Map.of("LINKED_ID", "INT", "ITEM", "LONGTEXT"));
+        }};
+        
+        expectedColums.forEach((table, columns) -> columns.forEach((column, type) -> {
+            Runnable task = () -> Bukkit.getScheduler().runTaskAsynchronously(Main.getInstance(), () -> {
+                try (Statement statement = this.database.createStatement();){
+                    statement.executeUpdate(String.format("ALTER TABLE %s ADD COLUMN IF NOT EXISTS %s %s", table, column, type));
+                }
+                catch (SQLException exception) {
+                    Main.getInstance().getLogger().severe(String.format("⚠️ | An error has occurred while updating tables : %s", exception.getMessage()));
+                }
+            });
+            if (this.ensureConnection(task)) {
+                Bukkit.getScheduler().runTaskAsynchronously(Main.getInstance(), task);
+            }
+        }));
+    }
 	
 		// ---------------------------------------- \\
 	
@@ -89,6 +128,23 @@ public class SQLManager {
 	
 		// ---------------------------------------- \\
 	
+    public void executeQuery(Query query) {
+		Runnable task = () -> {
+			Bukkit.getScheduler().runTaskAsynchronously(Main.getInstance(), () -> {
+				try(Statement statement = database.createStatement()) {				
+					statement.execute(query.getQuery());
+				} catch(SQLException exception) {
+					Main.getInstance().getLogger().severe(String.format(
+							"⚠️ | An error has occurred while executing query '%s' : %s",
+							query.name(), exception.getMessage()
+					));
+				}
+			});
+		};
+		
+		if(ensureConnection(task)) Bukkit.getScheduler().runTaskAsynchronously(Main.getInstance(), task);
+	}
+    
 	public void executeQuery(Query query, Object... objects) {
 		Runnable task = () -> {
 			Bukkit.getScheduler().runTaskAsynchronously(Main.getInstance(), () -> {
