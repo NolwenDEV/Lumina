@@ -35,5 +35,6 @@ public class Utils {
 		// ---------------------------------------- \\
 	
 	public static List<String> buildLore(String lore) { return Arrays.stream(lore.substring(1, lore.length() - 1).split(", ")).collect(Collectors.toList()); }
+	public static String combineLines(String value) { return Arrays.stream(value.substring(1, value.length() - 1).split(", ")).collect(Collectors.joining("\n")); }
 	
 }
