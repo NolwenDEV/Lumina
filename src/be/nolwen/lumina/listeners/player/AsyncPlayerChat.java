@@ -19,8 +19,11 @@ public class AsyncPlayerChat implements Listener {
 		if(event.getMessage() == null) return;
 		if(!Main.getInstance().getConfigManager().isChatModule()) return;
 		
-		Bukkit.getConsoleSender().sendMessage(getFormattedMessage(event));
-		for(Player player : Bukkit.getOnlinePlayers()) { player.sendMessage(getFormattedMessage(event)); }
+		if(!Main.getInstance().getConfigManager().isAuthenticationModule()
+				|| !Main.getInstance().getDataManager().getRestrictedPlayers().containsKey(event.getPlayer())) {
+			Bukkit.getConsoleSender().sendMessage(getFormattedMessage(event));
+			for(Player player : Bukkit.getOnlinePlayers()) { player.sendMessage(getFormattedMessage(event)); }
+		}
 		
 		event.setCancelled(true);
 	}
