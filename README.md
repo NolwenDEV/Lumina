@@ -18,10 +18,12 @@
 - ✉️ | A private messaging system allows players to send direct messages to each other, enabling private conversations without using public chat
 - ✈️ | A player teleportation system allowing players to request to teleport to each other (/tpto) or invite others to teleport to them (/tphere), making meeting up in the game quick and easy
 - 🛠️ | A set of utility commands to craft anywhere (/craft), return to your last death location (/back), safely trash items (/trash) and filter unwanted drops (/filter)
+- 🤖 | A Discord Bot able to manage your server through your Discord and much more [WIP]
 - 💬 | Customizable event messages (When player join, quit or die) and customizable chat messages
 - 💥 | Ability to disable Creeper Griefing
 - 🌾 | Automatically replants seeds when harvested, including modded crops
 - ♻️ | Auto-Updater who check for update when server starts and every 6 hours
+- 🔐 | Authenticate player using password and captcha with a session timeout of 7 days and IP address check
 - 🚧 | More incoming, stay in touch ! (Have an idea ? Contact me on Discord : [@NolwenDEV](https://discord.com/users/564087424754647051))
 
 # ⚠️ | Requirements
