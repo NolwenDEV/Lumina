@@ -15,10 +15,6 @@ public class ConfigManager {
     
     			// -------------------- \\
     
-    
-    @Configuration(FILE = "Configuration", KEY = "MODULE.PREMIUM")
-    private boolean premiumModule;
-    
     @Configuration(FILE = "Configuration", KEY = "MODULE.AUTHENTICATION")
     private boolean authenticationModule;
     
@@ -79,7 +75,6 @@ public class ConfigManager {
 
     			// -------------------- \\
     
-    public boolean isPremiumModule() { return premiumModule; }
     public boolean isAuthenticationModule() { return authenticationModule; }
     public boolean isWhitelistModule() { return whitelistModule; }
 
